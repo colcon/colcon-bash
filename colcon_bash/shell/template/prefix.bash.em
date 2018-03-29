@@ -1,4 +1,4 @@
-# generated from colcon_argcomplete/shell/template/prefix.bash.em
+# generated from colcon_bash/shell/template/prefix.bash.em
 @[if pkg_names]@
 
 # function to source another script with conditional trace output

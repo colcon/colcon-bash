@@ -1,4 +1,4 @@
-# generated from colcon_argcomplete/shell/template/package.bash.em
+# generated from colcon_bash/shell/template/package.bash.em
 
 # function to source another script with conditional trace output
 # first argument: the name of the script file
