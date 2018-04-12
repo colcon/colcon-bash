@@ -22,17 +22,15 @@ colcon_prefix_source_bash_script() {
   unset _colcon_prefix_source_bash_script
 }
 
-
-@[end if]@
-@[for i, pkg_name in enumerate(pkg_names)]@
-@[  if i == 0]@
 # a bash script is able to determine its own path
-@[  end if]@
-COLCON_CURRENT_PREFIX=$(builtin cd "`dirname "${BASH_SOURCE[0]}"`@('' if merge_install else ('/' + pkg_name))" > /dev/null && pwd)
+_prefix_COLCON_CURRENT_PREFIX=$(builtin cd "`dirname "${BASH_SOURCE[0]}"`" > /dev/null && pwd)
+
+@[  for pkg_name in pkg_names]@
+COLCON_CURRENT_PREFIX=$_prefix_COLCON_CURRENT_PREFIX@('' if merge_install else ('/' + pkg_name))
 colcon_prefix_source_bash_script "$COLCON_CURRENT_PREFIX/share/@(pkg_name)/package.bash"
 
-@[end for]@
-@[if pkg_names]@
+@[  end for]@
 unset COLCON_CURRENT_PREFIX
+unset _prefix_COLCON_CURRENT_PREFIX
 unset colcon_prefix_source_bash_script
 @[end if]@
