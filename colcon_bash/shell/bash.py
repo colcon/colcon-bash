@@ -64,3 +64,14 @@ class BashShell(ShellExtensionPoint):
                     lambda hook: str(hook[0]).endswith('.bash'), hooks)),
                 'package_script_no_ext': 'package',
             })
+
+    def create_hook_set_value(
+        self, env_hook_name, prefix_path, pkg_name, name, value,
+    ):  # noqa: D102
+        hook_path = prefix_path / 'share' / pkg_name / 'hook' / \
+            ('%s.bash' % env_hook_name)
+        logger.info("Creating environment hook '%s'" % hook_path)
+        expand_template(
+            Path(__file__).parent / 'template' / 'hook_set_value.bash.em',
+            hook_path, {'name': name, 'value': value})
+        return hook_path
