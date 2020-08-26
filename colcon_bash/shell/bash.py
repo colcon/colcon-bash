@@ -19,8 +19,6 @@ class BashShell(ShellExtensionPoint):
     def __init__(self):  # noqa: D107
         super().__init__()
         satisfies_version(ShellExtensionPoint.EXTENSION_POINT_VERSION, '^2.1')
-        if sys.platform == 'win32' and not use_all_shell_extensions:
-            raise SkipExtensionException('Not used on Windows systems')
 
     def create_prefix_script(self, prefix_path, merge_install):  # noqa: D102
         prefix_env_path = prefix_path / 'local_setup.bash'
