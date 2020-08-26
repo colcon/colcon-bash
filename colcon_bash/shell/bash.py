@@ -5,11 +5,9 @@ from pathlib import Path
 import sys
 
 from colcon_core.plugin_system import satisfies_version
-from colcon_core.plugin_system import SkipExtensionException
 from colcon_core.prefix_path import get_chained_prefix_path
 from colcon_core.shell import logger
 from colcon_core.shell import ShellExtensionPoint
-from colcon_core.shell import use_all_shell_extensions
 from colcon_core.shell.template import expand_template
 
 
