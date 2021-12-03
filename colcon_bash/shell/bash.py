@@ -49,9 +49,9 @@ class BashShell(ShellExtensionPoint):
                 'prefix_script_no_ext': 'local_setup',
             })
 
-    def create_package_script(
+    def create_package_script(  # noqa: D102
         self, prefix_path, pkg_name, hooks
-    ):  # noqa: D102
+    ):
         pkg_env_path = prefix_path / 'share' / pkg_name / 'package.bash'
         logger.info(
             "Creating package script '{pkg_env_path}'".format_map(locals()))
@@ -65,9 +65,9 @@ class BashShell(ShellExtensionPoint):
                 'package_script_no_ext': 'package',
             })
 
-    def create_hook_set_value(
+    def create_hook_set_value(  # noqa: D102
         self, env_hook_name, prefix_path, pkg_name, name, value,
-    ):  # noqa: D102
+    ):
         hook_path = prefix_path / 'share' / pkg_name / 'hook' / \
             ('%s.bash' % env_hook_name)
         logger.info("Creating environment hook '%s'" % hook_path)
