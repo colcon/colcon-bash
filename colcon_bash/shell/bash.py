@@ -72,7 +72,7 @@ class BashShell(ShellExtensionPoint):
             ('%s.bash' % env_hook_name)
         logger.info("Creating environment hook '%s'" % hook_path)
         if value == '':
-            value = '$COLCON_PREFIX_PATH'
+            value = '$COLCON_CURRENT_PREFIX'
         expand_template(
             Path(__file__).parent / 'template' / 'hook_set_value.bash.em',
             hook_path, {'name': name, 'value': value})
