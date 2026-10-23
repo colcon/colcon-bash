@@ -3,7 +3,7 @@
 # This script extends the environment for this package.
 
 # a bash script is able to determine its own path if necessary
-if [ -z "$COLCON_CURRENT_PREFIX" ]; then
+if [ -z "${COLCON_CURRENT_PREFIX:-}" ]; then
   # the prefix is two levels up from the package specific share directory
   _colcon_package_bash_COLCON_CURRENT_PREFIX="$(builtin cd "`dirname "${BASH_SOURCE[0]}"`/../.." > /dev/null && pwd)"
 else
@@ -15,7 +15,7 @@ fi
 # additional arguments: arguments to the script
 _colcon_package_bash_source_script() {
   if [ -f "$1" ]; then
-    if [ -n "$COLCON_TRACE" ]; then
+    if [ -n "${COLCON_TRACE:-}" ]; then
       echo "# . \"$1\""
     fi
     . "$@@"
